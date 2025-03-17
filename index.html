@@ -243,12 +243,37 @@
 								<header class="major">
 									<h2>수업 장소</h2>
 								</header>
-								<div class="features">
+								<div class="content">
 									<article align="center">
-										<div class="content">
-											<h3>뮤직프로덕션 / DAW / MIDI</h3>
+											<section class="section" id="section-3">
+												<div id="map" style="width: 100%; height: 400px; margin:auto"></div>
+												<!--code id="snippet" class="snippet"></code-->
+											</section>
+
+									  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=230jrqii8d"></script>
+									  <script id="code">
+											  var map = new naver.maps.Map('map', {
+												  center: new naver.maps.LatLng(37.3142585, 126.8391487), //지도의 초기 중심 좌표
+												  zoom: 16, //지도의 초기 줌 레벨
+												  minZoom: 13, //지도의 최소 줌 레벨
+												  zoomControl: false, //줌 컨트롤의 표시 여부
+												  zoomControlOptions: { //줌 컨트롤의 옵션
+													  position: naver.maps.Position.BOTTOM_RIGHT
+											  }});
+											  var marker = new naver.maps.Marker({
+												  position: new naver.maps.LatLng(37.312544, 126.839270),
+												  map: map
+											  });
+										  var $window = $(window);
+	  
+										  function getMapSize() {
+											  var size = new naver.maps.Size($window.width() - 15, $window.height() - 15);
+	  
+											  return size;
+										  };
+								  </script>
+
 											<p>안산 중앙역 (4호선, 수인분당선)</p>
-										</div>
 									</article>
 								</div>
 							</section>
