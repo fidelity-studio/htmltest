@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto Slab", serif;
   font-weight: 700;
   line-height: 1.5;
-  margin: 0 0 1em 0; }
+  margin: 0 0 0.3em 0; }
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     color: inherit;
     text-decoration: none;
@@ -998,13 +998,13 @@ header p {
   text-transform: uppercase; }
 
 header.major > :last-child {
-  border-bottom: solid 3px #f56a6a;
+  border-bottom: solid 3px #000000;
   display: inline-block;
-  margin: 0 0 2em 0;
+  margin: 0 0 1.5em 0;
   padding: 0 0.75em 0.5em 0; }
 
 header.main > :last-child {
-  margin: 0 0 1em 0; }
+  margin: 0 0 1% 0; }
 
 /* Form */
 form {
@@ -1642,15 +1642,15 @@ button,
       text-align: center;
       width: 10em; }
       .features article .icon:before {
-        color: #f56a6a;
+        color: #000000;
         font-size: 2.75rem;
         position: relative;
         top: 0.05em; }
       .features article .icon:after {
-        -moz-transform: rotate(45deg);
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
         border-radius: 0.25rem;
         border: solid 2px rgba(210, 215, 217, 0.75);
         content: '';
@@ -1789,7 +1789,7 @@ button,
       width: calc(50% - 6em); }
       .posts article:nth-last-child(3) {
         margin-bottom: 6em; } }
-  @media screen and (min-width: 201px) and (max-width: 1680px) {
+  @media screen and (min-width: 481px) and (max-width: 1680px) {
     .posts article:nth-child(2n + 1):before {
       display: none; }
     .posts article:nth-child(2n + 1):after {
@@ -1815,7 +1815,7 @@ button,
           width: calc(100% + 4.5em); }
         .posts article:nth-last-child(3) {
           margin-bottom: 4.5em; } }
-  @media screen and (max-width: 200px) {
+  @media screen and (max-width: 480px) {
     .posts {
       margin: 0 0 2em 0;
       width: 100%; }
@@ -2075,7 +2075,7 @@ button,
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  border-bottom: solid 5px #f63e22;
+  border-bottom: solid 5px #7a716f;
   padding: 6em 0 1em 0;
   position: relative; }
   #header > * {
@@ -2088,7 +2088,7 @@ button,
     border-bottom: 0;
     color: inherit;
     font-family: "Roboto Slab", serif;
-    font-size: 1.125em; }
+    font-size: 1.5em; }
   #header .icons {
     text-align: right; }
   @media screen and (max-width: 1680px) {
@@ -2098,7 +2098,7 @@ button,
     #header {
       padding-top: 6.5em; }
       #header .logo {
-        font-size: 1.25em;
+        font-size: 1.5em;
         margin: 0; }
       #header .icons {
         height: 5em;
