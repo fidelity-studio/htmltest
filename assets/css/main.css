@@ -1,5 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Hahmlet:wght@100..900&display=swap");
 /*
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
@@ -7,14 +8,14 @@
 */
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
-pre, a, abbr, acronym, address, big, cite,
-code, del, dfn, em, img, ins, kbd, q, s, samp,
+pre, abbr, acronym, address, big, cite,
+code, del, dfn, a, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
 u, i, center, dl, dt, dd, ol, ul, fieldset,
 form, label, legend, table, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
-canvas, details, embed, figure, figcaption,
-footer, header, hgroup, menu, nav, output, ruby,
+canvas, header, details, embed, figure, figcaption,
+footer, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -26,11 +27,18 @@ section, summary, time, mark, audio, video {
 li {  margin: 0;
   padding: 0;
   border: 0;
-  font-size: 12pt;
-  vertical-align: baseline; }
+  font-size: 11pt;
+  vertical-align: baseline;
+  font-family: "Hahmlet", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #d7d7d7;
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
+  
   display: block; }
 
 body {
@@ -120,6 +128,7 @@ a {
   border-bottom: dotted 1px;
   color: #828282;
   text-decoration: none; }
+  
   a:hover {
     border-bottom-color: #f56a6a;
     color: #f56a6a !important; }
@@ -134,12 +143,19 @@ em, i {
   font-style: italic; }
 
 p {
+  font-family: "Hahmlet", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: #ececec;
   margin: 0 0 2em 0; }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: "Hahmlet", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
   color: #ececec;
-  font-family: "Roboto Slab", serif;
-  font-weight: 700;
   line-height: 1.5;
   margin: 0 0 0.3em 0; }
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -2081,7 +2097,7 @@ button,
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  border-bottom: solid 5px #b5b5b5;
+  border-bottom: solid 5px #e1e1e1;
   padding: 6em 0 1em 0;
   position: relative; }
   #header > * {
@@ -2092,8 +2108,11 @@ button,
     margin-bottom: 0; }
   #header .logo {
     border-bottom: 0;
-    color: inherit;
-    font-family: "Roboto Slab", serif;
+    font-family: "Hahmlet", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: #ffffff;
     font-size: 1.5em; }
   #header .icons {
     text-align: right; }
@@ -2277,3 +2296,4 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
