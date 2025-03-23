@@ -1521,9 +1521,11 @@ button,
   color: #f56a6a !important;
   cursor: pointer;
   display: inline-block;
-  font-family: "Roboto Slab", serif;
+  font-family: "Hahmlet", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   font-size: 0.8em;
-  font-weight: 700;
   height: 3.5em;
   letter-spacing: 0.085em;
   line-height: 3.5em;
@@ -1590,6 +1592,45 @@ button,
     button.primary:active,
     .button.primary:active {
       background-color: #f45c5c; }
+
+  button.n,
+    .button.n {
+      font-weight: 500;
+      background-color: #03C75A;
+      box-shadow: none;
+      color: #ffffff !important; }
+      input[type="submit"].n:hover,
+      input[type="reset"].n:hover,
+      input[type="button"].n:hover,
+      button.n:hover,
+      .button.n:hover {
+        background-color: #65cd93; }
+      input[type="submit"].n:active,
+      input[type="reset"].n:active,
+      input[type="button"].n:active,
+      button.n:active,
+      .button.n:active {
+        background-color: #00e266; }  
+
+  button.k,
+    .button.k {
+      font-weight: 500;
+      background-color: #FEE500;
+      box-shadow: none;
+      color: #3a1d1d !important; }
+      input[type="submit"].k:hover,
+      input[type="reset"].k:hover,
+      input[type="button"].k:hover,
+      button.k:hover,
+      .button.k:hover {
+        background-color: #ffef64; }
+      input[type="submit"].k:active,
+      input[type="reset"].k:active,
+      input[type="button"].k:active,
+      button.k:active,
+      .button.k:active {
+        background-color: #d4be00; }  
+  
   input[type="submit"].disabled, input[type="submit"]:disabled,
   input[type="reset"].disabled,
   input[type="reset"]:disabled,
