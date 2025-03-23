@@ -126,7 +126,7 @@ a {
   -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   border-bottom: dotted 1px;
-  color: #828282;
+  color: #ebebeb;
   text-decoration: none; }
   
   a:hover {
@@ -2076,13 +2076,13 @@ button,
       text-indent: 7.25em;
       width: 7.25em; }
       #sidebar .toggle:before {
-        color: #7f888f;
+        color: #8f7f7f;
         margin-left: -0.0625em;
         margin-top: -0.25em;
         font-size: 1.1rem;
         z-index: 1; }
       #sidebar .toggle:after {
-        background: rgba(222, 225, 226, 0.75);
+        background: rgba(255, 255, 255, 0.572);
         border-radius: 0.375em;
         content: '';
         height: 3.5em;
