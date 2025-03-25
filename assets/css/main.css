@@ -2341,3 +2341,7 @@ button,
 #map {
       pointer-events: none;
   }
+
+[data-fade="true"] {
+  transition: filter 0.3s ease-in-out;
+}
