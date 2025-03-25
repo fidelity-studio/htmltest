@@ -2085,7 +2085,7 @@ button,
         height: 6.25em;
         left: 24em;
         line-height: 6.25em;
-        text-indent: 6em;
+        text-indent: -9999px;
         width: 5em; }
         #sidebar .toggle:before {
           font-size: 1.5rem; }
@@ -2115,7 +2115,7 @@ button,
           height: 4em;
           width: 100%; }
       #sidebar .toggle {
-        text-indent: 6em;
+        text-indent: -9999px;
         width: 6em; }
         #sidebar .toggle:before {
           font-size: 1.5rem;
@@ -2124,7 +2124,7 @@ button,
         display: none; } }
   @media screen and (max-width: 736px) {
     #sidebar .toggle {
-      text-indent: 8em;
+      text-indent: -9999px;
       width: 7.25em; }
       #sidebar .toggle:before {
         color: #8f7f7f;
