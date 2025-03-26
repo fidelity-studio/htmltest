@@ -6,7 +6,7 @@ window.addEventListener('scroll', () => {
     const windowHeight = window.innerHeight;
     
     // 요소의 중간 지점이 화면의 상단 1/4 ~ 하단 1/4 사이에 있으면 밝기 조절
-    if (rect.top < windowHeight * 3/4 && rect.bottom > windowHeight / 3) {
+    if (rect.top < windowHeight * 2/3 && rect.bottom > windowHeight / 2) {
       element.style.filter = `brightness(1)`; 
     } else {
       element.style.filter = `brightness(0.6)`; 
