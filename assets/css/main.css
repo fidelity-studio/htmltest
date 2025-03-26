@@ -133,7 +133,31 @@ p {
   font-weight: 500;
   font-style: normal;
   color: #ececec;
-  margin: 0 0 2em 0; }
+  margin: 0 0 2em 0; 
+}
+
+/* 특정 section 안의 p 태그만 스타일 적용 */
+section#banner > .content > p {
+  font-size: clamp(14px, 1.1vw, 16px); /* 반응형 폰트 크기 */
+  line-height: 1.8; /* 가독성을 위한 줄 간격 */
+  max-width: 90%; /* 너무 길어지지 않도록 조정 */
+  margin: auto;
+}
+
+/* 작은 화면에서 자연스럽게 조정 */
+@media (max-width: 768px) {
+  section#banner > .content > p {
+      font-size: 14px;
+      max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  section#banner > .content > p {
+      font-size: 13px;
+      max-width: 98%;
+  }
+}
 
   
 h1, h2, h3, h4, h5, h6 {
@@ -187,12 +211,19 @@ h6 {
 sub {
   font-size: 0.7em;
   position: relative;
-  top: 0.0em; }
+  top: 0.2em; }
 
 sup {
   font-size: 0.7em;
   position: relative;
   top: -0.5em; }
+
+supp {
+  font-size: 0.7em;  /* 글자 크기 축소 */
+  line-height: 0.8;   /* 줄 간격 줄이기 */
+  display: block; /* 블록 요소로 변경하여 줄바꿈 */
+  margin-top: -2px; /* 위쪽 여백 제거 */ }
+
 
 blockquote {
   border-left: solid 3px rgba(210, 215, 217, 0.75);
@@ -1178,6 +1209,10 @@ input[type="radio"] + label:before {
   color: #9fa3a6 !important;
   opacity: 1.0; }
 
+
+
+
+  
 /* Box */
 .box {
   border-radius: 0.375em;
@@ -2346,3 +2381,4 @@ button,
 [data-fade="true"] {
   transition: filter 0.3s ease-in-out;
 }
+
