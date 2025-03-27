@@ -2381,6 +2381,7 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+    
 
 #map {
       pointer-events: none;
@@ -2399,24 +2400,52 @@ button,
 
 /* 타이핑 중인 텍스트 스타일 */
 .typing-text.typing-in-progress {
-  color: #979797; /* 어두운 회색 */
+  color: #8e8e8e94; /* 어두운 회색 */
 }
 
 /* 타이핑 완료된 텍스트 스타일 */
 .typing-text.typing-complete {
-  color: #ececec; /* 흰색 */
+  color: #f6f6f6; /* 흰색 */
 }
 
 /* 커서 스타일 */
 .typing {
   display: inline-block;
   font-weight: bold;
-  color: #ffffff00; /* 커서 색상 */
-  animation: blink 0.5s step-end infinite; /* 깜빡이는 애니메이션 */
+  color: #898989; /* 커서 색상 */
+  animation: blink 1s step-end infinite; /* 깜빡이는 애니메이션 */
 }
 
 @keyframes blink {
   50% {
-    opacity: 0;
+    opacity: 0; /* 투명도 변경으로 깜빡이는 효과 */
   }
+}
+
+
+
+
+/* 글리치 텍스트 컨테이너 스타일 */
+.glitch-text {
+  font-family: "Hahmlet", serif; /* 원하는 폰트 설정 */
+  font-size: 1.2em; /* 기본 글꼴 크기 */
+  line-height: 1.5; /* 줄 간격 */
+  color: white; /* 기본 텍스트 색상 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+  overflow: hidden; /* 컨테이너에서 넘치는 텍스트를 숨김 */
+  white-space: pre-wrap; /* 줄바꿈 유지 */
+}
+
+/* 랜덤 문자 스타일 */
+.glitch-text .char-random {
+  color: rgb(255, 255, 255); /* 랜덤 문자는 반투명 흰색 */
+  opacity: 0.1; /* 초기 투명도 */
+  transition: opacity 0.3s ease-in; /* 부드러운 전환 효과 */
+}
+
+/* 완성된 문자 스타일 */
+.glitch-text .char-complete {
+  color: white; /* 완성된 문자는 완전한 흰색 */
+  opacity: 1; /* 완전히 불투명 */
+  transition: opacity 0.5s ease-in-out; /* 부드러운 전환 효과 */
 }
