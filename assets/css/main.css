@@ -2388,46 +2388,35 @@ button,
 
 
 
+
+  
 [data-fade="true"] {
   transition: filter 0.3s ease-in-out;
 }
 
 
 
-/* 기본 텍스트 스타일 */
-.fade-in-text {
-  opacity: 0; /* 처음에는 텍스트가 보이지 않도록 설정 */
-  animation: fadeIn 1s forwards; /* fadeIn 애니메이션을 3초 동안 실행 */
+
+/* 타이핑 중인 텍스트 스타일 */
+.typing-text.typing-in-progress {
+  color: #979797; /* 어두운 회색 */
 }
 
-/* 애니메이션 정의 */
-@keyframes fadeIn {
-  0% {
-      opacity: 0; /* 애니메이션 시작 시 텍스트는 보이지 않음 */
-  }
-  100% {
-      opacity: 1; /* 애니메이션 끝날 때 텍스트는 완전히 보임 */
-  }
+/* 타이핑 완료된 텍스트 스타일 */
+.typing-text.typing-complete {
+  color: #ececec; /* 흰색 */
 }
 
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
+/* 커서 스타일 */
 .typing {
   display: inline-block;
-  opacity: 0;
+  font-weight: bold;
+  color: #ffffff00; /* 커서 색상 */
+  animation: blink 0.5s step-end infinite; /* 깜빡이는 애니메이션 */
 }
 
-/* 타이핑 중에는 커서 깜빡이지 않음 */
-.typing.typing-active {
-  animation: none;
-}
-
-/* 타이핑 완료 후 1.2초 주기로 3초간 깜빡이다 사라짐 */
-.typing.done {
-  animation: blink 0.3s infinite;
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
