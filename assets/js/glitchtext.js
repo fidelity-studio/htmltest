@@ -3,8 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   glitchTextElements.forEach((element) => {
     const targetHTML = element.getAttribute("data-text");
-    const duration = 2000; // 전체 애니메이션 시간 (ms)
-    const interval = 70; // 각 단계 간격 (ms)
+    const duration = 1500; // 전체 애니메이션 시간 (ms)
+    const initialInterval = 30; // 초기 단계 간격 (ms)
+    const maxInterval = 130; // 최대 단계 간격 (ms)
 
     // 문단 높이 자동 조정
     const maxHeight = calculateHeight(element, targetHTML);
@@ -41,10 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
       .filter((index) => index !== null);
 
     // 각 단계에서 변환할 문자 개수 계산
-    const steps = Math.ceil(duration / interval); // 전체 단계 수
+    const steps = Math.ceil(duration / initialInterval); // 전체 단계 수
     const charsPerStep = Math.ceil(remainingIndices.length / steps); // 단계당 변환할 문자 개수
 
-    const glitchInterval = setInterval(() => {
+    let currentInterval = initialInterval; // 현재 간격
+    let step = 0;
+
+    function glitchStep() {
       let output = "";
 
       // 무작위로 변환할 인덱스 선택
@@ -79,10 +83,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // 애니메이션 종료 조건
       if (remainingIndices.length === 0) {
-        clearInterval(glitchInterval); // 애니메이션 종료
         element.innerHTML = targetHTML; // 최종 HTML 설정
+        return; // 종료
       }
-    }, interval);
+
+      // 다음 단계 호출
+      step++;
+      currentInterval = Math.min(
+        initialInterval + (maxInterval - initialInterval) * (step / steps),
+        maxInterval
+      ); // 간격을 점점 증가
+      setTimeout(glitchStep, currentInterval);
+    }
+
+    glitchStep(); // 첫 단계 호출
 
     // 창 크기 변경 시 최대 높이 재계산
     window.addEventListener("resize", () => {
