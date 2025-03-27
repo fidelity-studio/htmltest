@@ -2156,20 +2156,20 @@ button,
       text-indent: -9999px;
       width: 7.25em; }
       #sidebar .toggle:before {
-        color: #8f7f7f;
-        margin-left: -0.0625em;
-        margin-top: -0.25em;
+        color: #6c6c6c;
+        margin-left: none;
+        margin-top: -0.3em;
         font-size: 1.1rem;
         z-index: 1; }
       #sidebar .toggle:after {
-        background: rgba(255, 255, 255, 0.572);
+        background: rgba(255, 255, 255, 0.536);
         border-radius: 0.375em;
         content: '';
-        height: 3.5em;
+        height: 3em;
         left: 1em;
         position: absolute;
         top: 1em;
-        width: 5em; } }
+        width: 4em; } }
 
         
 
@@ -2203,7 +2203,7 @@ button,
       padding-top: 5em; } }
   @media screen and (max-width: 736px) {
     #header {
-      padding-top: 6.5em; }
+      padding-top: 4.5em; }
       #header .logo {
         font-size: 1.5em;
         margin: 0; }
@@ -2392,6 +2392,23 @@ button,
   transition: filter 0.3s ease-in-out;
 }
 
+
+
+/* 기본 텍스트 스타일 */
+.fade-in-text {
+  opacity: 0; /* 처음에는 텍스트가 보이지 않도록 설정 */
+  animation: fadeIn 1s forwards; /* fadeIn 애니메이션을 3초 동안 실행 */
+}
+
+/* 애니메이션 정의 */
+@keyframes fadeIn {
+  0% {
+      opacity: 0; /* 애니메이션 시작 시 텍스트는 보이지 않음 */
+  }
+  100% {
+      opacity: 1; /* 애니메이션 끝날 때 텍스트는 완전히 보임 */
+  }
+}
 
 
 @keyframes blink {
