@@ -1,47 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 한 글자씩 타이핑 애니메이션
   const typingTextElements = document.querySelectorAll(".typing-text");
+  const totalDuration = 6000; // 모든 문단이 이 시간 안에 끝나도록 설정
 
+  let maxSteps = 0;
+  const typingData = [];
+
+  // 1️⃣ **각 문단의 타이핑 단계(step) 개수 계산**
   typingTextElements.forEach((element) => {
     const rawHTML = element.getAttribute("data-text");
-
-    // 숨겨진 요소로 높이 계산
-    const hiddenDiv = document.createElement("div");
-    hiddenDiv.style.position = "absolute";
-    hiddenDiv.style.visibility = "hidden";
-    hiddenDiv.style.height = "auto";
-    hiddenDiv.style.whiteSpace = "normal"; // 줄바꿈 최소화
-    hiddenDiv.style.width = `${element.offsetWidth}px`; // 부모 요소의 실제 너비 사용
-    hiddenDiv.style.padding = "0"; // 패딩 제거
-    hiddenDiv.style.margin = "0"; // 마진 제거
-    hiddenDiv.style.lineHeight = getComputedStyle(element).lineHeight; // 동일한 줄 간격 사용
-    hiddenDiv.style.fontSize = getComputedStyle(element).fontSize; // 동일한 글꼴 크기 사용
-    hiddenDiv.style.fontFamily = getComputedStyle(element).fontFamily; // 동일한 글꼴 사용
-    hiddenDiv.style.boxSizing = "border-box"; // 박스 크기 계산 방식 통일
-    hiddenDiv.innerHTML = rawHTML;
-
-    document.body.appendChild(hiddenDiv);
-    const calculatedHeight = hiddenDiv.offsetHeight;
-    document.body.removeChild(hiddenDiv);
-
-    // 계산된 높이를 적용
-    element.style.height = `${calculatedHeight}px`;
-
-    // 타이핑 애니메이션 시작
-    startTypingAnimation(element, rawHTML);
+    const steps = calculateTypingSteps(rawHTML);
+    typingData.push({ element, rawHTML, steps });
+    maxSteps = Math.max(maxSteps, steps);
   });
 
-  function startTypingAnimation(element, rawHTML) {
-    const regex = /(<[^>]+>)|([^<]+)/g; // 태그와 텍스트를 분리하는 정규식
+  // 2️⃣ **각 문단의 속도를 동일한 step 횟수로 맞추기**
+  typingData.forEach(({ element, rawHTML, steps }) => {
+    const adjustedDelay = totalDuration / maxSteps; // 가장 긴 문단 기준으로 타이핑 속도 설정
+    calculateHeight(element, rawHTML);
+    startTypingAnimation(element, rawHTML, maxSteps, adjustedDelay);
+    window.addEventListener("resize", () => calculateHeight(element, rawHTML));
+  });
+
+  // 🔹 **타이핑 단계(step) 개수 계산 (HTML 태그 포함)**
+  function calculateTypingSteps(rawHTML) {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = rawHTML;
+    const textLength = (tempDiv.textContent || "").replace(/\s+/g, "").length; // 순수 텍스트 길이
+    const brCount = (rawHTML.match(/<br>/g) || []).length; // <br> 개수
+    const tagCount = (rawHTML.match(/<[^>]+>/g) || []).length; // 모든 태그 개수
+    return textLength + brCount + tagCount; // 전체 타이핑 단계 수
+  }
+
+  // 🔹 **문단 높이 자동 조정**
+  function calculateHeight(element, rawHTML) {
+    const hiddenDiv = document.createElement("div");
+    Object.assign(hiddenDiv.style, {
+      position: "absolute",
+      visibility: "hidden",
+      width: `${element.offsetWidth}px`,
+      lineHeight: getComputedStyle(element).lineHeight,
+      fontSize: getComputedStyle(element).fontSize,
+      fontFamily: getComputedStyle(element).fontFamily,
+    });
+    hiddenDiv.innerHTML = rawHTML;
+    document.body.appendChild(hiddenDiv);
+    element.style.height = `${hiddenDiv.offsetHeight}px`;
+    document.body.removeChild(hiddenDiv);
+  }
+
+  // 🔹 **타이핑 애니메이션 실행 (동일한 step 횟수로 동기화)**
+  function startTypingAnimation(element, rawHTML, maxSteps, delay) {
+    const regex = /(<br>|<[^>]+>)|([^<]+)/g;
     const parts = [];
     let match;
 
     while ((match = regex.exec(rawHTML)) !== null) {
       if (match[1]) {
-        // HTML 태그
         parts.push({ type: "tag", content: match[1] });
       } else if (match[2]) {
-        // 일반 텍스트
         for (const ch of match[2]) {
           parts.push({ type: "char", content: ch });
         }
@@ -53,26 +69,17 @@ document.addEventListener("DOMContentLoaded", function () {
     cursor.className = "typing typing-active";
     cursor.textContent = "|";
     element.appendChild(cursor);
-
-    // 타이핑 중 스타일 적용
     element.classList.add("typing-in-progress");
 
     function type() {
-      if (index < parts.length) {
-        let html = "";
-        for (let i = 0; i <= index; i++) {
-          if (parts[i].type === "tag") {
-            html += parts[i].content; // 태그는 그대로 추가
-          } else {
-            html += parts[i].content; // 텍스트는 한 글자씩 추가
-          }
-        }
+      if (index < maxSteps) {
+        const stepSize = Math.ceil(parts.length / maxSteps); // 각 step에서 추가할 글자 수
+        let html = parts.slice(0, index * stepSize).map(p => p.content).join("");
         element.innerHTML = html;
         element.appendChild(cursor);
         index++;
-        setTimeout(type, 40); // 타이핑 속도 조절
+        setTimeout(type, delay);
       } else {
-        // 타이핑 완료 후 스타일 변경
         element.classList.remove("typing-in-progress");
         element.classList.add("typing-complete");
         cursor.remove();
