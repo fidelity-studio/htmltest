@@ -2378,7 +2378,31 @@ button,
       pointer-events: none;
   }
 
+
+
 [data-fade="true"] {
   transition: filter 0.3s ease-in-out;
 }
 
+
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.typing {
+  display: inline-block;
+  opacity: 0;
+}
+
+/* 타이핑 중에는 커서 깜빡이지 않음 */
+.typing.typing-active {
+  animation: none;
+}
+
+/* 타이핑 완료 후 1.2초 주기로 3초간 깜빡이다 사라짐 */
+.typing.done {
+  animation: blink 0.3s infinite;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
