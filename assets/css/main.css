@@ -224,6 +224,14 @@ supp {
   display: block; /* 블록 요소로 변경하여 줄바꿈 */
   margin-top: -2px; /* 위쪽 여백 제거 */ }
 
+suppp {
+    font-size: 0.7em;  /* 글자 크기 축소 */
+    line-height: 0.8;   /* 줄 간격 줄이기 */
+    display: block; /* 블록 요소로 변경하여 줄바꿈 */
+    margin-top: -2px; /* 위쪽 여백 제거 */ 
+    margin-left: 16em; }
+  
+
 
 blockquote {
   border-left: solid 3px rgba(210, 215, 217, 0.75);
