@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const typingTextElements = document.querySelectorAll(".typing-text");
   const totalDuration = 4000; // 모든 문단이 이 시간 안에 끝나도록 설정
-  const initialDelay = 3800; // 타이핑 시작 전 지연 시간 (ms)
+  const initialDelay = 3000; // 타이핑 시작 전 지연 시간 (ms)
 
   let maxSteps = 0;
   const typingData = [];
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const regex = /(<br>|<[^>]+>)|([^<]+)/g;
     const parts = [];
     let match;
-
+  
     while ((match = regex.exec(rawHTML)) !== null) {
       if (match[1]) {
         parts.push({ type: "tag", content: match[1] });
@@ -68,14 +68,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
-
+  
     let index = 0;
     const cursor = document.createElement("span");
     cursor.className = "typing typing-active";
     cursor.textContent = "|";
     element.appendChild(cursor);
     element.classList.add("typing-in-progress");
-
+  
     function type() {
       if (index < maxSteps) {
         const stepSize = Math.ceil(parts.length / maxSteps); // 각 step에서 추가할 글자 수
@@ -85,12 +85,20 @@ document.addEventListener("DOMContentLoaded", function () {
         index++;
         setTimeout(type, delay);
       } else {
-        element.classList.remove("typing-in-progress");
-        element.classList.add("typing-complete");
-        cursor.remove();
+        // 🔹 타이핑 완료 직전에 깜빡이는 효과 추가
+        element.style.transition = "opacity 0.1s"; // 깜빡임 효과를 위한 트랜지션
+        element.style.opacity = "0"; // 투명하게 만듦
+        setTimeout(() => {
+          element.style.opacity = "1"; // 다시 보이게 만듦
+  
+          // 🔹 깜빡임 효과가 끝난 후 클래스 변경 및 색상 변경
+          element.classList.remove("typing-in-progress");
+          element.classList.add("typing-complete");
+          cursor.remove();
+        }, 200); // 200ms 후 다시 보이게
       }
     }
-
+  
     type();
   }
 });
