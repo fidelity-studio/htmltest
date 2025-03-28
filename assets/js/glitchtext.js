@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   glitchTextElements.forEach((element) => {
     const targetHTML = element.getAttribute("data-text");
-    const duration = 1500; // 전체 애니메이션 시간 (ms)
-    const initialInterval = 30; // 초기 단계 간격 (ms)
-    const maxInterval = 130; // 최대 단계 간격 (ms)
+    const duration = 1000; // 전체 애니메이션 시간 (ms)
+    const initialInterval = 20; // 초기 단계 간격 (ms)
+    const maxInterval = 100; // 최대 단계 간격 (ms)
 
     // 문단 높이 자동 조정
     const maxHeight = calculateHeight(element, targetHTML);
