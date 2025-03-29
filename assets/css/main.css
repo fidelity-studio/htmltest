@@ -2006,7 +2006,7 @@ button,
 }
 
 
-@media screen and (max-width: 1680px) {
+@media screen and (min-width: 769px) {
   .custom-posts article:nth-child(2) {
     order: 3; /* 두 번째 아티클을 세 번째로 이동 */
   }
